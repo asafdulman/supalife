@@ -1,0 +1,159 @@
+$secondary-color: #1CC8EE;
+
+.actions-page-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions-heading {
+    color: $secondary-color;
+    font-family: 'Poppins', sans-serif;
+}
+
+.action-page-top-box {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.action-recap-box {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    color: $primary-color;
+    background-color: $input-bgc;
+    padding: 10px 12px;
+    border-radius: 15px;
+
+    p {
+        margin: 0;
+
+    }
+}
+
+.remove-action-confirmation-box {
+    position: fixed;
+    top: 0;
+    background-color: $primary-color;
+    color: rgb(228, 228, 228);
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
+    font-size: 18px;
+    text-align: center;
+    z-index: 6;
+}
+
+.remove-action-confirm-btn {
+    border-radius: 15px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #fff;
+    color: #00BA88;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 5px;
+}
+
+.remove-action-cancel-btn {
+    border-radius: 15px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #fff;
+    color: #C30052;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 5px;
+}
+
+.filter-inputs-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.actions-filter-title-input {
+    border-radius: 15px;
+    border: none;
+    padding: 10px 30px;
+    margin: 15px 0 20px;
+    background-color: $input-bgc;
+    width: 55vw;
+    color: #14142B;
+    font-size: 14px;
+    z-index: 2;
+    
+    &::placeholder {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        color: #14142B;
+        font-size: 14px;
+    }
+    
+    &:focus {
+        outline: none;
+        border: 1px solid $primary-color;
+    }
+}
+
+
+
+.actions-filter-category-input {
+    font-family: 'Poppins', sans-serif;
+    background-color: $input-bgc;
+    border-radius: 15px;
+    width: 140px;
+    border: none;
+    padding: 10px 20px;
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, $primary-color 50%),
+        linear-gradient(135deg, $primary-color 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.actions-filter-category-input:focus {
+    background-image:
+        linear-gradient(45deg, $primary-color 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, $primary-color 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: green;
+    outline: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+// DND
+
+.list-wrapper-dragging-over {
+    background-color: #e8e8f0;
+    border: 1px dotted #5F2EEA;
+    padding: 0 10px;
+    transition: all 0.2s ease;
+}
+
+.list-wrapper {
+    padding: 0 10px;
+    transition: all 0.2s ease;
+}
+

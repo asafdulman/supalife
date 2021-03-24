@@ -1,0 +1,225 @@
+$bgc: #F7F7FC;
+$primary-color: #5F2EEA;
+$input-bgc: #EFF0F7;
+
+.edit-rate-box-not-rated {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+
+}
+
+.edit-rate-box-rated {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+    border-bottom: 2px solid $primary-color;
+    border-top: 2px solid $primary-color;
+}
+
+.category-heading-rated {
+    color: $primary-color;
+    text-decoration: line-through;
+    letter-spacing: 1.1px;
+    padding: 10px 50px;
+}
+
+.category-heading-not-rated {
+    color: $primary-color;
+    letter-spacing: 1.1px;
+    padding: 10px 50px;
+
+}
+
+.edit-rate-modal {
+    position: fixed;
+    z-index: 9999;
+}
+
+.edit-rate-preview-overlay {
+    background-color: #dfdfdf88;
+    transition: all 0.3s ease;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.close-rate-modal-btn {
+    position: absolute;
+    left: 10px;
+    top: 3px;
+    font-size: 20px;
+}
+
+.undo-rate-modal-btn {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 16px;
+
+}
+
+.edit-rate-form {
+    border-radius: 10px;
+    padding: 60px 15px 40px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+
+    .edit-rate-form-category {
+        position: absolute;
+        top: 7px;
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .edit-rate-input-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .delete-form-btn {
+        background-color: #fff;
+        color: $primary-color;
+        border-radius: 20px;
+        padding: 8px 10px;
+        margin-left: 5px;
+        transition: all 0.1s ease;
+        border: 1px solid lightgray;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+
+    .edit-rate-input {
+        border-radius: 15px;
+        border: none;
+        padding: 12px 25px;
+        background-color: $input-bgc;
+        width: 60vw;
+        color: #14142B;
+        font-size: 14px;
+        margin: 20px 0;
+
+        &::placeholder {
+            text-align: center;
+            color: #14142B;
+            font-size: 14px;
+        }
+
+        &:focus {
+            outline: none;
+            border: 1px solid $primary-color;
+        }
+
+    }
+
+    .save-rating-btn {
+        width: 30vw;
+        border-radius: 15px;
+        padding: 10px 20px;
+        background-color: #fff;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+
+        &:active {
+            outline: none;
+        }
+    }
+
+    button {
+        border-radius: 50%;
+        padding: 15px 20px;
+        margin: 0 9px;
+        border: none;
+        color: rgb(58, 58, 58);
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1;
+        font-family: 'Raleway', sans-serif;
+        transition: transform 0.2s ease;
+
+        &:active {
+            transform: scale(0.8);
+            outline: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    .edit-rate-btns-box {
+
+        button:first-child {
+            background-color: #C30052;
+            margin-left: 0;
+        }
+
+        button:nth-child(2) {
+            background-color: #ED2E7E;
+        }
+
+        button:nth-child(3) {
+            background-color: #F2994A;
+        }
+
+        button:nth-child(4) {
+            background-color: #F4B740;
+        }
+
+        button:nth-child(5) {
+            background-color: #00BA88;
+            margin-right: 0;
+        }
+
+        // button:first-child {
+        //     background-color: #cc3232;
+        //     margin-left: 0;
+        // }
+
+        // button:nth-child(2) {
+        //     background-color: #db7b2b;
+        // }
+
+        // button:nth-child(3) {
+        //     background-color: #e7b416;
+        // }
+
+        // button:nth-child(4) {
+        //     background-color: #99c140;
+        // }
+
+        // button:nth-child(5) {
+        //     background-color: #2dc937;
+        //     margin-right: 0;
+        // }
+    }
+
+
+}

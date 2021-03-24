@@ -1,0 +1,100 @@
+.suggested-actions-box {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.973);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.suggested-actions-heading {
+    font-family: 'Poppins', sans-serif;
+    margin: 0 15px 10px 0;
+    color: #14142B;
+    padding: 5px;
+}
+
+.suggested-actions-btns-box {
+    
+}
+
+.suggested-actions-btn {
+    border-radius: 20px;
+    background-color: $primary-color;
+    padding: 15px 35px;
+    width: 80%;
+    border: 1px solid white;
+    color: rgb(231, 231, 231);
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0;
+    font-size: 17px;
+    transition: all 0.8s ease;
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.suggested-clicked {
+    background-color: #00BA88;
+    font-weight: bold;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.close-add-suggested-action-modal {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    color: rgb(88, 88, 88);
+}
+
+.suggested-actions-category-box {
+    color: rgb(94, 94, 94);
+    font-family: 'Poppins', sans-serif;
+    margin: 5px 0 20px 0;
+    font-size: 18px;
+}
+
+.suggested-actions-date-input {
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
+    margin: 15px 0;
+    background-color: $input-bgc;
+    color: $primary-color;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $primary-color;
+    }
+}
+
+.date-and-save-btn-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggested-actions-save-btn {
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    font-size: 18px;
+    padding: 15px 0;
+    font-family: 'Poppins', sans-serif;
+}

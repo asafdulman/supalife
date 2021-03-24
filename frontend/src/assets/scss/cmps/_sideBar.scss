@@ -1,0 +1,97 @@
+.side-bar-box-open {
+    position: absolute;
+    height: 100vh;
+    width: 90vw;
+    background-color: $secondary-color;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(0);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.side-bar-box-open > * {
+    font-family: 'Poppins', sans-serif;
+    padding: 30px 10px;
+    color: rgb(231, 231, 231);
+    font-size: 20px;
+    border-bottom: 1px solid lightgray;
+}
+.side-bar-box-close > * {
+    font-family: 'Poppins', sans-serif;
+    padding: 30px 10px;
+    color: rgb(231, 231, 231);
+    font-size: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.side-bar-box-close {
+    position: absolute;
+    height: 100vh;
+    width: 90vw;
+    background-color: $secondary-color;
+    transition: all 0.3s ease-in-out;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-102%);
+}
+
+.side-bar-about-box {
+    display: flex;
+    align-items: baseline;
+    color: #F7F7FC;
+    
+    a {
+        color: #F7F7FC;
+        
+    }
+}
+
+.side-bar-edit-details-box {
+    a {
+        color: #F7F7FC;
+    }
+}
+
+.about-icon {
+    margin-right: 10px;
+    color: #F7F7FC;
+}
+
+.edit-details-icon {
+    margin-right: 10px;
+    color: #F7F7FC;
+
+}
+
+.logout-btn {
+    position: fixed;
+    width: 100px;
+    padding: 10px;
+    background-color: #f7f7fc;
+    border: none;
+    bottom: 80px;
+    color: red;
+    border-radius: 0 5px 5px 0;
+}
+
+.side-bar-overlay {
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: fixed;
+}
+
+.copy-rights {
+    position: absolute;
+    bottom: 70px;
+    padding: 0;
+    right: 20px;
+    border: none;
+    font-size: 16px;
+    color: white;
+}

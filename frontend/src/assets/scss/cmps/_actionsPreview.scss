@@ -1,0 +1,247 @@
+$secondary-color: #1CC8EE;
+
+.action-box-done-axis-left {
+    width: 345px;
+    z-index: 2;
+    // border: 2px solid #602eeab0;
+    // border: 2px solid $primary-color;
+    position: absolute;
+    transform: rotate(25deg);
+}
+
+.action-box-done-axis-right {
+    width: 345px;
+    z-index: 2;
+    // border: 2px solid $primary-color;
+    // border: 2px solid #602eeab0;
+    position: absolute;
+    transform: rotate(-25deg);
+}
+
+.action-box-not-done {
+    position: relative;
+    width: 280px;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+    margin: 15px auto;
+    border-radius: 15px;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.action-box-done {
+    position: relative;
+    width: 280px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.582);
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+    margin: 15px auto;
+    border-radius: 15px;
+    border: 1px solid #1cc7ee60;
+    color: #1cc7ee70;
+    // color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.edit-action-box {
+    position: absolute;
+    width: 250px;
+    left: 5px;
+    background-color: #fff;
+    padding: 12px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.edit-action-input-title {
+    font-family: 'Poppins', sans-serif;
+    background-color: $input-bgc;
+    border-radius: 15px;
+    border: none;
+    padding: 8px 25px;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $primary-color;
+    }
+}
+
+.edit-action-input-category {
+    margin: 10px 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: $input-bgc;
+    border-radius: 15px;
+    width: 140px;
+    border: none;
+    padding: 8px 20px;
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, $primary-color 50%),
+        linear-gradient(135deg, $primary-color 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.edit-action-input-category:focus {
+    background-image:
+        linear-gradient(45deg, $primary-color 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, $primary-color 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: green;
+    outline: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.edit-action-input-date {
+    border-radius: 15px;
+    border: none;
+    padding: 5px 5px 5px 10px;
+    background-color: $input-bgc;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $primary-color;
+    }
+}
+
+.edit-action-save-btn {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 25px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.action-preview-heading {
+    margin: 10px 0;
+}
+
+.action-category {
+    color: rgb(190, 190, 190);
+    margin: 5px 0;
+}
+
+.action-todo-time {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.done-action-btn {
+    background-color: $secondary-color;
+    color: #fff;
+    border-radius: 20px;
+    padding: 8px 10px;
+    transition: all 0.1s ease;
+    border: 1px solid $secondary-color;
+    margin-top: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.undone-action-btn {
+    background-color: white;
+    color: $secondary-color;
+    border-radius: 20px;
+    padding: 8px 10px;
+    transition: all 0.1s ease;
+    border: 1px solid $secondary-color;
+    margin-top: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.edit-action-btn {
+    background-color: #fff;
+    color: $secondary-color;
+    border-radius: 20px;
+    padding: 8px 10px;
+    transition: all 0.1s ease;
+    border: 1px solid lightgray;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.remove-action-btn {
+    background-color: #fff;
+    color: $secondary-color;
+    border-radius: 20px;
+    padding: 8px 10px;
+    transition: all 0.1s ease;
+    border: 1px solid lightgray;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+//DND
+
+.action-preview-box-dragging {
+    background-color: rgba(55, 148, 148, 0.13);
+    border-radius: 15px;
+}
+

@@ -1,0 +1,125 @@
+.signup-box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form {
+    margin-top: 80px;
+    background-color: #fff;
+    padding: 50px;
+    padding-bottom: 40px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signup-username-input {
+
+    background-color: #EFF0F7;
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: none;
+    margin-bottom: 15px;
+    
+    &:focus {
+        background-color: #fff;
+        color: rgb(73, 73, 73);
+        border:1px solid $primary-color;
+        outline: none;
+    }
+}
+.signup-password-input {
+
+    background-color: #EFF0F7;
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: none;
+    margin-bottom: 15px;
+    
+    &:focus {
+        background-color: #fff;
+        color: rgb(73, 73, 73);
+        border:1px solid $primary-color;
+        outline: none;
+    }
+}
+.signup-age-input {
+    align-self: flex-start;
+    background-color: #EFF0F7;
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: none;
+    margin-bottom: 15px;
+    
+    &:focus {
+        background-color: #fff;
+        color: rgb(73, 73, 73);
+        border:1px solid $primary-color;
+        outline: none;
+    }
+}
+
+
+
+.signup-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: $primary-color;
+    border-radius: 20px;
+    color: white;
+    margin-top: 30px;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.sign-up-gender-select {
+    align-self: flex-start;
+    font-family: 'Poppins', sans-serif;
+    background-color: $input-bgc;
+    border-radius: 15px;
+    width: 140px;
+    border: none;
+    padding: 10px 20px;
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, $primary-color 50%),
+        linear-gradient(135deg, $primary-color 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.sign-up-gender-select:focus {
+    background-image:
+        linear-gradient(45deg, $primary-color 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, $primary-color 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: green;
+    outline: 0;
+
+    &:focus {
+        outline: none;
+    }
+}

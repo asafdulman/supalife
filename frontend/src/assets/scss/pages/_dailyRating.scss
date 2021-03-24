@@ -1,0 +1,102 @@
+.daily-rating-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.daily-rating-heading {
+    font-family: 'Poppins', sans-serif;
+}
+
+.daily-rating-btns-box {
+
+    width: 300px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        width: 125px;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 15px;
+        border: 1px solid white;
+        color: white;
+        background-color: $primary-color;
+        font-size: 16px;
+        transition: all 0.2s ease;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+
+    }
+}
+
+.stats-category-btn {
+    margin: 5px;
+    border-radius: 25px;
+    padding: 10px 15px;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: #fff;
+    transition: all 0.2s ease;
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+.charts-box {
+    width: 300px;
+    margin: 30px auto;
+}
+
+.daily-rating-date-input {
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
+    margin: 15px 0;
+    background-color: $input-bgc;
+    color: $primary-color;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $primary-color;
+    }
+}
+
+.daily-rating-no-data-box {
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 3;
+
+    a {
+        border: 1px solid $primary-color;
+        text-decoration: none;
+        font-size: 20px;
+        line-height: 2;
+        background-color: white;
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+}
+
+.daily-rating-insights-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

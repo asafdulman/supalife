@@ -1,0 +1,43 @@
+.edit-details-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-details-heading {
+    font-family: 'Poppins' , sans-serif;
+}
+
+.edit-details-form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: 140px;
+    padding: 50px;
+    border-radius: 15px;
+    border: 1px solid $primary-color;
+
+    input {
+        font-family: 'Poppins', sans-serif;
+        background-color: $input-bgc;
+        border-radius: 15px;
+        border: none;
+        padding: 8px 25px;
+        margin: 10px 0;
+    
+        &:focus {
+            outline: none;
+            border: 1px solid $primary-color;
+        }
+    }
+    button {
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 25px;
+        margin-top: 10px;
+    }
+}

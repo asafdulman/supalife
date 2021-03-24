@@ -1,0 +1,45 @@
+@import './cmps/editRatePreview';
+@import './pages/rateDate';
+@import './cmps/bottombar';
+@import './pages/home';
+@import './pages/signup';
+@import './pages/about';
+@import './pages/categories';
+@import './cmps/catogoryPreview';
+@import './cmps/login';
+@import './cmps/messageModal';
+@import './pages/dailyRating';
+@import './pages/staticCategories';
+@import './pages/actionsPage';
+@import './cmps/actionsPreview';
+@import './cmps/insights';
+@import './cmps/sideBar';
+@import './cmps/actionsAdd';
+@import './cmps/suggestedActions';
+@import './pages/editUserInfo';
+
+$color1: #F7F7FC;
+$secondary-color: #1CC8EE;
+$bgc: #F7F7FC;
+$primary-color: #5F2EEA;
+$input-bgc: #EFF0F7;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: $color1;
+    font-family: 'Roboto', sans-serif;
+}
+
+.display-none {
+    display: none;
+}
+
+.background-img {
+    // background-image: url('../img/Shape.png');
+}
+
+

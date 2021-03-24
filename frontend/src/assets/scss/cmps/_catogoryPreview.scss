@@ -1,0 +1,123 @@
+.category-preview-box {
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid lightgray;
+}
+
+.category-preview-box-edit-open {
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid lightgray;
+}
+
+.category-preview-heading {
+    color: #14142B;
+    margin: 10px 0;
+}
+
+.category-btns-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-category-btn {
+    background-color: #fff;
+    color: $primary-color;
+    border-radius: 20px;
+    padding: 8px 10px;
+    margin-top: 5px;
+    transition: all 0.1s ease;
+    border: 1px solid lightgray;
+
+    &:focus {   
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.edit-category-btn {
+    background-color: #fff;
+    color: $primary-color;
+    border-radius: 20px;
+    padding: 8px 10px;
+    transition: all 0.1s ease;
+    border: 1px solid lightgray;
+
+    &:focus {   
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.edit-category-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+
+    .edit-category-input {
+        border-radius: 15px;
+        border: none;
+        padding: 10px 30px;
+        background-color: $input-bgc;   
+        width: 35vw;
+        color: #14142B;
+        font-size: 14px;
+        z-index: 2;
+    
+        &::placeholder {
+            text-align: center;
+            color: #14142B;
+            font-size: 16px;
+        }
+    
+        &:focus {
+            outline: none;
+            border: 1px solid $primary-color;
+        }
+
+    }
+
+    .edit-category-save-btn {
+        background-color: $primary-color;
+        color: #fff;
+        border-radius: 20px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        transition: all 0.1s ease;
+        border: 1px solid lightgray;
+    
+        &:focus {   
+            outline: none;
+        }
+    
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}

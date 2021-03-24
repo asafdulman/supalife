@@ -1,0 +1,100 @@
+.category-insight-box {
+    position: relative;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid $secondary-color;
+    padding: 20px;
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.weekly-category-insight-box {
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid $secondary-color;
+    padding: 20px;
+    width: 80%;
+    margin: 10px auto 80px;
+    text-align: center;
+
+}
+
+.general-insight-box {
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid $secondary-color;
+    padding: 20px;
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.daily-rating-insights-heading {
+    margin: 0;
+}
+
+.open-call-to-action-btn {
+    position: absolute;
+    top: -15px;
+    left: 160px;
+    animation: glow 3s ease-in-out infinite;
+    color: rgb(85, 85, 85);
+}
+
+.blob {
+  position: absolute;
+  top: -22px;
+  left: 145px;
+    background: black;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    margin: 10px;
+    height: 25px;
+    width: 25px;
+    transform: scale(1);
+    animation: pulse-black 2s infinite;
+  }
+
+  .blob.green {
+    background: rgba(51, 217, 178, 1);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 1);
+    animation: pulse-green 2s infinite;
+  }
+  
+  @keyframes pulse-green {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+    }
+    
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(51, 217, 178, 0);
+    }
+    
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+    }
+  }
+// .open-call-to-action-btn {
+//     position: absolute;
+//     top: -15px;
+//     left: 160px;
+//     animation: glow 3s ease-in-out infinite;
+//     color: rgb(85, 85, 85);
+// }
+
+@keyframes glow {
+    from {
+        transform: scale(0.9);
+        color: rgb(85, 85, 85);
+    }
+    
+    to {
+        transform: scale(1);
+        color: rgb(63, 63, 63);
+     
+    }
+}
