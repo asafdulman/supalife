@@ -10,7 +10,7 @@ export const userService = {
     changeCategory: editCategory,
     login,
     signup,
-    updateUserCreds
+    updateUserCreds,
     // updateDailySummary,
 }
 

@@ -64,9 +64,11 @@
 }
 
 .daily-rating-date-input {
+    width: 200px;
+    text-align: center;
     border-radius: 15px;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     margin: 15px 0;
     background-color: $input-bgc;
     color: $primary-color;

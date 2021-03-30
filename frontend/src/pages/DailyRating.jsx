@@ -160,9 +160,9 @@ export function DailyRating() {
                 {/* <h3 className="daily-rating-insights-heading">Insights</h3> */}
                 {loggedInUser && getInsight() && <p className="general-insight-box">{getInsight()}</p>}
                 {loggedInUser && isByCategory && categoryInsight() && <div className="category-insight-box">
+                    <div onClick={() => { setIsSuggestedModalOpen(!isSuggestedModalOpen) }} className="blob green"></div>
                     <p >{categoryInsight()}</p>
                     {/* <i onClick={() => { setIsSuggestedModalOpen(!isSuggestedModalOpen) }} className="fas open-call-to-action-btn fa-2x fa-exclamation"></i> */}
-                    <div onClick={() => { setIsSuggestedModalOpen(!isSuggestedModalOpen) }} className="blob green"></div>
                 </div>}
                 {loggedInUser && <p className={getWeekAvgInsight() ? "weekly-category-insight-box" : "display-none"}>{getWeekAvgInsight()}</p>}
             </div>

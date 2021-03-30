@@ -14,21 +14,20 @@
 .go-to-categories-modal {
     z-index: 9999;
     position: absolute;
-    top: 20%;
-    left: 5%;
+    top: 22%;
     width: 80%;
-    height: 300px;
     text-align: center;
     background-color: rgb(216, 216, 216);
     color: rgb(1, 10, 139);
     border-radius: 10px;
-    padding: 20px;
+    padding: 35px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     p:nth-child(1) {
+        font-size: 20px;
         line-height: 1.8;
     }
     p:nth-child(2) {
@@ -120,7 +119,7 @@
     background-color: #00BA88;
     color: #FCFCFC;
     position: fixed;
-    border-radius: 10px;
+    border-radius: 0 0 20px 20px;
     top: 0;
     margin: 0;
     left: 0;
@@ -149,7 +148,7 @@
     background-color: #00BA88;
     color: #FCFCFC;
     position: fixed;
-    border-radius: 10px;
+    border-radius: 0 0 20px 20px;
     top: 0;
     margin: 0;
     left: 0;
@@ -191,7 +190,7 @@
     background-color: #00BA88;
     color: #FCFCFC;
     position: fixed;
-    border-radius: 10px;
+    border-radius: 0 0 20px 20px;
     top: 0;
     margin: 0;
     left: 0;
@@ -204,7 +203,7 @@
     background-color: #b61b1b;
     color: #FCFCFC;
     position: fixed;
-    border-radius: 10px;
+    border-radius: 0 0 20px 20px;
     top: 0;
     margin: 0;
     left: 0;

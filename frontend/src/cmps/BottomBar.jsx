@@ -23,9 +23,9 @@ export default function BottomBar() {
 
     const handleScroll = debounce(() => {
         const currentScrollPos = window.pageYOffset;
-        setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 35) || currentScrollPos < 10);
+        setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 25) || currentScrollPos < 10);
         setPrevScrollPos(currentScrollPos);
-    }, 100);
+    }, 200);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);

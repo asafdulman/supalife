@@ -37,9 +37,3 @@ export function ProgressBar() {
         </div>
     )
 }
-
-
-// logic -
-
-// check if the category has already rated
-// 

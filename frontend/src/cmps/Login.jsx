@@ -8,6 +8,13 @@ export function Login() {
     const dispatch = useDispatch()
     const [credentials, setCredentials] = useState({ userName: '', password: '' })
 
+    const [focused, setFocused] = useState(false)
+    const onFocus = () => {
+        setFocused(true)
+
+    }
+    const onBlur = () => setFocused(false)
+
     const onHandleChange = (ev) => {
         const name = ev.target.name
         const value = ev.target.value
@@ -16,7 +23,6 @@ export function Login() {
 
     const onLogin = async (ev) => {
         ev.preventDefault()
-        console.log('user', ev);
         const user = await userService.login(credentials)
         dispatch(updateUser(user))
         setCredentials({ userName: '', password: '' })
@@ -25,8 +31,7 @@ export function Login() {
     return (
         <div className="login-box">
             <form className="login-form">
-                <input className="user-name-input" autoComplete="off" type="text" name="userName" placeholder="User Name" value={credentials.userName} onChange={(ev) => { onHandleChange(ev) }} />
-                {/* <i className="fas user-icon fa-user"></i> */}
+                <input onFocus={onFocus} onBlur={onBlur} className="user-name-input" autoComplete="off" type="text" name="userName" placeholder="User Name" value={credentials.userName} onChange={(ev) => { onHandleChange(ev) }} />
                 <input className="password-input" type="password" name="password" placeholder="Password" value={credentials.password} onChange={(ev) => { onHandleChange(ev) }} />
                 <button className="login-btn" onClick={(ev) => { onLogin(ev) }}>Login</button>
             </form>
