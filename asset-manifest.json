@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/supalife/static/css/main.fd75140e.chunk.css",
-    "main.js": "/supalife/static/js/main.7c0cb91e.chunk.js",
-    "main.js.map": "/supalife/static/js/main.7c0cb91e.chunk.js.map",
-    "runtime-main.js": "/supalife/static/js/runtime-main.0d27dde8.js",
-    "runtime-main.js.map": "/supalife/static/js/runtime-main.0d27dde8.js.map",
-    "static/js/2.c77ad64b.chunk.js": "/supalife/static/js/2.c77ad64b.chunk.js",
-    "static/js/2.c77ad64b.chunk.js.map": "/supalife/static/js/2.c77ad64b.chunk.js.map",
-    "index.html": "/supalife/index.html",
-    "static/css/main.fd75140e.chunk.css.map": "/supalife/static/css/main.fd75140e.chunk.css.map",
-    "static/js/2.c77ad64b.chunk.js.LICENSE.txt": "/supalife/static/js/2.c77ad64b.chunk.js.LICENSE.txt",
-    "static/media/logo.f84ac29a.png": "/supalife/static/media/logo.f84ac29a.png"
+    "main.css": "/static/css/main.3b8cce07.chunk.css",
+    "main.js": "/static/js/main.0a7393e5.chunk.js",
+    "main.js.map": "/static/js/main.0a7393e5.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2c5f3cd8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2c5f3cd8.js.map",
+    "static/js/2.a906bf60.chunk.js": "/static/js/2.a906bf60.chunk.js",
+    "static/js/2.a906bf60.chunk.js.map": "/static/js/2.a906bf60.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.3b8cce07.chunk.css.map": "/static/css/main.3b8cce07.chunk.css.map",
+    "static/js/2.a906bf60.chunk.js.LICENSE.txt": "/static/js/2.a906bf60.chunk.js.LICENSE.txt",
+    "static/media/logo.f84ac29a.png": "/static/media/logo.f84ac29a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0d27dde8.js",
-    "static/js/2.c77ad64b.chunk.js",
-    "static/css/main.fd75140e.chunk.css",
-    "static/js/main.7c0cb91e.chunk.js"
+    "static/js/runtime-main.2c5f3cd8.js",
+    "static/js/2.a906bf60.chunk.js",
+    "static/css/main.3b8cce07.chunk.css",
+    "static/js/main.0a7393e5.chunk.js"
   ]
 }
