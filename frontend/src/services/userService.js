@@ -4,14 +4,12 @@ export const userService = {
     updateStaticCategory,
     getUser,
     updateUserActions,
-    // rateCategory,
     updateDailyData,
     updateCategory,
     changeCategory: editCategory,
     login,
     signup,
     updateUserCreds,
-    // updateDailySummary,
 }
 
 async function updateUserActions(loggedInUser) {
@@ -36,13 +34,6 @@ async function updateDailyData(loggedInUser, dailyData, date) {
 
     return user
 }
-
-
-// async function rateCategory(loggedInUser, category, rate, desc) {
-//     const date = getCurrDate()
-//     const user = await httpService.put(`/user/rate/${loggedInUser._id}`, { loggedInUser, category, rate, desc, date})
-//     return user
-// }
 
 function getCurrDate() {
     let date = new Date()
@@ -74,13 +65,4 @@ async function updateUserCreds(loggedInUser, userName, age) {
     return res
 }
 
-
-
-
-// async function updateDailySummary(loggedInUser, summary) {
-//     const date = getCurrDate()
-//     const user = await httpService.put(`/user/summary/${loggedInUser._id}`, { loggedInUser,summary, date })
-//     console.log('user in summary', user);
-//     return user
-// }
 

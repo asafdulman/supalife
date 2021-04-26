@@ -1,20 +1,22 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { DailyRatingList } from "../cmps/DailyRatingList";
 import { MyChart } from "../cmps/MyChart";
 import { insightService } from '../services/insightsService'
 import { SuggestedActions } from '../cmps/SuggestedActions';
+import { hideBottomBar, showBottomBar } from '../store/actions/bottomBarActions';
+import { NavLink } from 'react-router-dom';
 
 
 export function DailyRating() {
     const [pickedDate, setPickedDate] = useState()
     const [datePicker, setDatePicker] = useState()
     const [isByCategory, setIsByCategory] = useState()
-    // const [chartType, setChartType] = useState()
     const [selectedCategory, setSelectedCategory] = useState()
+    const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
     const [categoryData, setCategoryData] = useState()
     const [isSuggestedModalOpen, setIsSuggestedModalOpen] = useState(false)
     const loggedInUser = useSelector(state => state.userReducer.loggedInUser)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         setInitialDate()
@@ -23,17 +25,18 @@ export function DailyRating() {
     useEffect(() => {
         if (loggedInUser) getWeekAvgInsight()
         setCategoryData(getCategoryData())
-        categoryInsight()
+        getCategoryInsight()
     }, [pickedDate])
 
     useEffect(() => {
         setCategoryData(getCategoryData())
-        categoryInsight()
+        getCategoryInsight()
     }, [selectedCategory])
 
     const setInitialDate = () => {
         let date = new Date()
-        date = `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2) - 1}`;
+        date = `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+        date = loggedInUser?.userName === 'Guest' ? '2021-04-04' : date
         setDatePicker(date)
         const dayArr = date.split('-')
         date = `${dayArr[1]}/${dayArr[2]}/${dayArr[0]}`
@@ -104,17 +107,14 @@ export function DailyRating() {
         setSelectedCategory('')
     }
 
-    const categoryInsight = () => {
+    const getCategoryInsight = () => {
         var rangedDates;
         var sum = 0;
         var count = 0;
         var avg = 0
-        // if user selected a category and a date,
         if (selectedCategory && pickedDate) {
-            // calculate the avg of the category and date 3-4 days back.
-            // get the relevant time range
             const dayIndex = loggedInUser?.dailyRating.findIndex(day => day.date === pickedDate)
-            if (dayIndex === 0) {
+            if (!dayIndex) {
                 rangedDates = loggedInUser?.dailyRating[0]
             } else if (dayIndex === 1) {
                 rangedDates = loggedInUser?.dailyRating.slice(dayIndex - 1, dayIndex + 1)
@@ -124,28 +124,38 @@ export function DailyRating() {
                 rangedDates = loggedInUser?.dailyRating.slice(dayIndex - 3, dayIndex + 1)
             }
             if (rangedDates.length > 1) {
-                const res = rangedDates.map(day => {
-                    const chosenCategory = day.rating.find(cat => cat.category === selectedCategory)
+                rangedDates.forEach(day => {
+                    const chosenCategory = day.rating.find(category => category.category === selectedCategory)
                     if (chosenCategory && chosenCategory.rate) count++
                     sum += chosenCategory?.rate
                 })
                 avg = sum / count
-            } else {
-                // what happens if there is only one day?
-            }
-            // then, make up some rules to return relevent insight
-            console.log('avg', avg);
+            } 
             return insightService.getInsightPerCategory(selectedCategory, avg)
         }
     }
 
     const toggleSuggestedModal = (action) => {
-        action === 'open' ? setIsSuggestedModalOpen(true) : setIsSuggestedModalOpen(false)
+        if (action === 'open') {
+            setIsSuggestedModalOpen(true)
+        } else {
+            setIsSuggestedModalOpen(false)
+            dispatch(showBottomBar())
+        }
+    }
+
+    const onBlobClick = () => {
+        setIsSuggestedModalOpen(!isSuggestedModalOpen)
+        dispatch(hideBottomBar())
     }
 
     return (
         <div className="daily-rating-box">
             <h1 className="daily-rating-heading">Daily Stats</h1>
+            {loggedInUser?.userName === 'Guest' && <i onClick={() => { setIsInfoModalOpen(!isInfoModalOpen) }} className="far info-icon-daily-rating fa-question-circle"></i>}
+            <div className={isInfoModalOpen ? "explanation-daily-rating-box-open" : "explanation-daily-rating-box-close"}>
+                <p>Since you are in a guest mode, the data you see in the past days (beginning of April) is hard-coded. Feel free to <NavLink to="/signup">sign up</NavLink> and enter your own life data.</p>
+            </div>
             <input className="daily-rating-date-input" type="date" value={datePicker} onChange={(ev) => { onPickDate(ev) }} />
             <div className="daily-rating-btns-box">
                 <button onClick={() => { setIsByCategory(!isByCategory) }}>By Category</button>
@@ -154,15 +164,12 @@ export function DailyRating() {
             {loggedInUser && isByCategory && <div>
                 {loggedInUser.categories.map(category => <button onClick={() => { onSelectCategory(category) }} key={category} className="stats-category-btn">{category}</button>)}
             </div>}
-            {/* {loggedInUser && loggedInUser.dailyRating.map(day => <DailyRatingList key={day.date} date={day.date} ratingList={day.rating} pickedDate={pickedDate} />)} */}
             {loggedInUser && <MyChart dailyRating={loggedInUser.dailyRating} pickedDate={pickedDate} loggedInUser={loggedInUser} selectedCategory={selectedCategory} categoryData={categoryData} />}
             <div className="daily-rating-insights-box">
-                {/* <h3 className="daily-rating-insights-heading">Insights</h3> */}
                 {loggedInUser && getInsight() && <p className="general-insight-box">{getInsight()}</p>}
-                {loggedInUser && isByCategory && categoryInsight() && <div className="category-insight-box">
-                    <div onClick={() => { setIsSuggestedModalOpen(!isSuggestedModalOpen) }} className="blob green"></div>
-                    <p >{categoryInsight()}</p>
-                    {/* <i onClick={() => { setIsSuggestedModalOpen(!isSuggestedModalOpen) }} className="fas open-call-to-action-btn fa-2x fa-exclamation"></i> */}
+                {loggedInUser && isByCategory && getCategoryInsight() && <div className="category-insight-box">
+                    <div onClick={() => { onBlobClick() }} className="blob green"></div>
+                    <p >{getCategoryInsight()}</p>
                 </div>}
                 {loggedInUser && <p className={getWeekAvgInsight() ? "weekly-category-insight-box" : "display-none"}>{getWeekAvgInsight()}</p>}
             </div>

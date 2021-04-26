@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export function MyChart({ dailyRating, pickedDate, loggedInUser, selectedCategory, categoryData }) {
 
     const chosenDateData = dailyRating.find(day => day.date === pickedDate)
-    if (!chosenDateData) return <p className="daily-rating-no-data-box">Want to get some important information? <NavLink to="/ratethisday">Rate more!</NavLink> </p>;
+    if (!chosenDateData) return <div className="daily-rating-no-data-box">Want to get some important information? <NavLink to="/ratethisday">Rate more!</NavLink> </div>;
     const resBar = chosenDateData.rating.map(category => category.rate)
     const dayIndex = loggedInUser?.dailyRating.findIndex(day => day.date === pickedDate)
     const rangedDates = loggedInUser?.dailyRating.slice(dayIndex - 3, dayIndex + 1)
@@ -22,8 +22,6 @@ export function MyChart({ dailyRating, pickedDate, loggedInUser, selectedCategor
         })
         return dailyAvgs
     }
-
-
 
     const dataByDateBar = {
         labels: [...loggedInUser.categories],

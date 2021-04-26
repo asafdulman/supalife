@@ -1,10 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { hideBottomBar, showBottomBar } from "../store/actions/bottomBarActions";
 
 export default function BottomBar() {
 
     const [prevScrollPos, setPrevScrollPos] = useState(0);
-    const [visible, setVisible] = useState(true);
+    const isShown = useSelector(state => state.bottomBarReducer.isShown)
+    const loggedInUser = useSelector(state => state.userReducer.loggedInUser)
+    const dispatch = useDispatch()
 
     const debounce = (func, wait, immediate) => {
         var timeout;
@@ -23,42 +27,43 @@ export default function BottomBar() {
 
     const handleScroll = debounce(() => {
         const currentScrollPos = window.pageYOffset;
-        setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 25) || currentScrollPos < 10);
+        ((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 5) || currentScrollPos < 10) ? dispatch(showBottomBar()) :dispatch(hideBottomBar()) 
+        // setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 5) || currentScrollPos < 10);
         setPrevScrollPos(currentScrollPos);
-    }, 200);
+    }, 100);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [prevScrollPos, visible, handleScroll]);
-    
+    }, [prevScrollPos, isShown, handleScroll]);
+
     return (
-        <div className={visible ? 'bottom-bar-box-visiable' : 'bottom-bar-box-not-visiable' }>
-            <NavLink to="/">
+        <div className={isShown ? 'bottom-bar-box-visiable' : 'bottom-bar-box-not-visiable'}>
+            <NavLink activeClassName="selected-ling" exact to="/">
                 <div className="bottom-bar-cat-box">
                     <i className="fas fa-2x fa-house-user"></i>
-                    <span>Home</span>
+                    <span>{loggedInUser ? loggedInUser.userName : 'Home'}</span>
                 </div>
             </NavLink>
-            <NavLink to="categories">
+            <NavLink activeClassName="selected-ling" to="categories">
                 <div className="bottom-bar-cat-box">
                     <i className="fas fa-2x fa-chart-pie"></i>
-                    <span>Categoeries</span>
+                    <span>Categories</span>
                 </div>
             </NavLink>
-            <NavLink to="actions">
+            <NavLink activeClassName="selected-ling" to="actions">
                 <div className="bottom-bar-cat-box">
                     <i className="fas fa-2x fa-tasks"></i>
                     <span>Actions</span>
                 </div>
             </NavLink>
-            <NavLink to="dailyrating">
+            <NavLink activeClassName="selected-ling" to="dailyrating">
                 <div className="bottom-bar-cat-box">
                     <i className="fas fa-2x fa-signal"></i>
                     <span>Stats</span>
                 </div>
             </NavLink>
-            <NavLink to="ratethisday">
+            <NavLink activeClassName="selected-ling" to="ratethisday">
                 <div className="bottom-bar-cat-box">
                     <i className="fas fa-2x fa-star"></i>
                     <span>Rate</span>

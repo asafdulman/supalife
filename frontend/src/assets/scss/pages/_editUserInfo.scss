@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin-top: 140px;
+    margin-top: 50px;
     padding: 50px;
     border-radius: 15px;
     border: 1px solid $primary-color;
@@ -40,4 +40,14 @@
         padding: 10px 25px;
         margin-top: 10px;
     }
+}
+
+.edit-user-info-guest {
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(224, 7, 7);    
+    background-color: white;
+    margin-bottom: 0;
+    font-family: 'Poppins' ,sans-serif;
 }

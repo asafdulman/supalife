@@ -23,16 +23,9 @@ export function ProgressBar() {
         textAlign: 'right'
       }
     
-      const labelStyles = {
-        padding: 5,
-        color: '#fff',
-        fontWeight: 'bold'
-      }
-
     return (
         <div style={containerStyles} className="outer-progressbar-box">
             <div style={fillerStyles} className="inner-progressbar-box">
-                {/* <span style={labelStyles}>{`${completed/total*100}%`}</span> */}
             </div>
         </div>
     )

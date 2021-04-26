@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 
-
 export function StaticCategoryPreview({ category, loggedInUser, updateCategoryInUser }) {
 
     const [isCategory, setIsCategory] = useState()
@@ -24,7 +23,6 @@ export function StaticCategoryPreview({ category, loggedInUser, updateCategoryIn
         <div onClick={() => { updateCategory() }} className={isCategory ? 'category-exists' : 'category-not-exists'}>
             <p>{category} </p>
             {isCategory && <span className="added-ribbon"><i className="fas fa-star"></i></span>}
-            {/* {isCategory && <span className="added-ribbon">Added</span>} */}
         </div>
     )
 }

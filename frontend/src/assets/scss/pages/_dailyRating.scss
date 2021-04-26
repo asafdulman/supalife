@@ -8,6 +8,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.info-icon-daily-rating {
+    position: absolute;
+    top: 35px;
+    left: 15px;
+    font-size: 22px;
+    color: $primary-color;
+}
+
 .daily-rating-btns-box {
 
     width: 300px;
@@ -60,7 +68,7 @@
 
 .charts-box {
     width: 300px;
-    margin: 30px auto;
+    margin: 30px auto 60px;
 }
 
 .daily-rating-date-input {
@@ -80,7 +88,7 @@
 }
 
 .daily-rating-no-data-box {
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     font-size: 18px;
     line-height: 3;
@@ -101,4 +109,59 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.explanation-daily-rating-box-open {
+    position: fixed;
+    z-index: 5;
+    transform: translateX(0);
+    transition: all 0.3s ease-in-out;
+    padding: 20px;
+    border-radius: 10px 20px 10px 20px;
+    background-color: white;
+    font-size: 18px;
+    text-align: center;
+    top: 65px;
+    left: 5px;
+    color: rgb(70, 70, 70);
+    font-family: 'Poppins', sans-serif;
+    width: 98%;
+    box-shadow: 0px 15px 15px 2px #E0E0E0;
+
+    span {
+        color: $primary-color;
+        font-size: 19px;
+    }
+
+    a {
+        color: $primary-color;
+        font-size: 19px;
+    }
+}
+
+.explanation-daily-rating-box-close {
+    z-index: 5;
+    box-shadow: 0px 15px 15px 2px #E0E0E0;
+    position: fixed;
+    width: 98%;
+    transform: translateX(-115%);
+    transition: all 0.3s ease-in-out;
+    padding: 20px;
+    border-radius: 10px 20px 10px 20px;
+    background-color: white;
+    font-size: 18px;
+    text-align: center;
+    top: 65px;
+    left: 5px;
+    color: rgb(70, 70, 70);
+
+    span {
+        color: $primary-color;
+        font-size: 19px;
+    }
+
+    a {
+        color: $primary-color;
+        font-size: 19px;
+    }
 }

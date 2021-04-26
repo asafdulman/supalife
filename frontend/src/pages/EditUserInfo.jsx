@@ -23,6 +23,7 @@ export function EditUserInfo() {
 
     const onSave = async (ev) => {
         ev.preventDefault()
+        if (loggedInUser.userName === 'Guest') return;
         if (userData.userName === loggedInUser.userName && userData.age === loggedInUser.age) {
             setIsErrorMessageOpen(true)
             setTimeout(() => {
@@ -47,6 +48,7 @@ export function EditUserInfo() {
                 <div className="user-creds-message-modal">User Details Updated Successfully.</div>
             </Slide>
             <h1 className="edit-details-heading">Edit Details</h1>
+            {loggedInUser.userName === 'Guest' && <p className="edit-user-info-guest">Since you are a visiting guest, you won't be able to edit any details.</p>}
             <form className="edit-details-form-box">
                 <input onChange={(ev) => { onHandleChange(ev) }} value={userData?.userName} name="userName" type="text" placeholder="User Name" />
                 {/* <input onChange={(ev) => { onHandleChange(ev) }} value={userData?.password} name="password" type="password" placeholder="Password" /> */}

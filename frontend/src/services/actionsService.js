@@ -126,7 +126,39 @@ function suggestedActions() {
             timeStamp : ''
         },
         {
+            title : 'Think of a good friend I haven\'t been in touch lately, and contact him/her.',
+            category : 'Friends',
+            isDone : false,
+            todoTime : '',
+            createdAt : '',
+            timeStamp : ''
+        },
+        {
+            title : 'Ask a random friend what\'s up.',
+            category : 'Friends',
+            isDone : false,
+            todoTime : '',
+            createdAt : '',
+            timeStamp : ''
+        },
+        {
             title : 'Read about being a successful worker',
+            category : 'Work',
+            isDone : false,
+            todoTime : '',
+            createdAt : '',
+            timeStamp : ''
+        },
+        {
+            title : 'Think of ways to stand out in the crowd.',
+            category : 'Work',
+            isDone : false,
+            todoTime : '',
+            createdAt : '',
+            timeStamp : ''
+        },
+        {
+            title : 'Write an article about my field.',
             category : 'Work',
             isDone : false,
             todoTime : '',
@@ -142,8 +174,8 @@ function suggestedActions() {
             timeStamp : ''
         },
         {
-            title : 'Surprise partner with a Pizza',
-            category : 'Spouse',
+            title : 'Surprise her with a Pizza',
+            category : 'Wife',
             isDone : false,
             todoTime : '',
             createdAt : '',
@@ -151,7 +183,15 @@ function suggestedActions() {
         },
         {
             title : 'Clean the house',
-            category : 'Spouse',
+            category : 'Wife',
+            isDone : false,
+            todoTime : '',
+            createdAt : '',
+            timeStamp : ''
+        },
+        {
+            title : 'Clean the house',
+            category : 'Wife',
             isDone : false,
             todoTime : '',
             createdAt : '',
@@ -182,8 +222,8 @@ function suggestedActions() {
             timeStamp : ''
         },
         {
-            title : 'Buy flowers for wife',
-            category : 'Spouse',
+            title : 'Buy flowers.',
+            category : 'Wife',
             isDone : false,
             todoTime : '',
             createdAt : '',

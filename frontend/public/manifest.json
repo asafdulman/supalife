@@ -1,6 +1,6 @@
 {
-  "short_name": "Gimzu",
-  "name": "Gimzu - Autobiography Memory",
+  "short_name": "SupaLife",
+  "name": "SupaLife",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "diagram.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "diagram.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "512x512"
     }

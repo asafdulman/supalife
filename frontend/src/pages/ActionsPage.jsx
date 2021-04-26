@@ -2,22 +2,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { ActionPreview } from '../cmps/ActionPreview'
 import { ActionsAdd } from '../cmps/ActionsAdd'
-import { changeActionsOrder, updateUser } from '../store/actions/userActions'
+import { updateUser } from '../store/actions/userActions'
 import { actionsService } from '../services/actionsService'
 import { Slide } from '@material-ui/core';
-
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
 import { userService } from '../services/userService'
+import { hideBottomBar, showBottomBar } from '../store/actions/bottomBarActions'
 
-// import { userService } from '../services/userService'
-// import { removeAction } from '../services/actionsService'
 export function ActionsPage() {
 
     const [filterBy, setFilterBy] = useState({ title: '', category: 'All' })
-    // const [isAddActionModalOpen, setIsAddActionModalOpen] = useState(false)
     const [isRemoveMessageOpen, setIsRemoveMessageOpen] = useState(false)
-    const [isErrorMsgModal, setIsErrorMsgModal] = useState(false)
+    const [isRemoveMsgModal, setIsRemoveMsgModal] = useState(false)
     const [isDoneMsgModal, setIsDoneMsgModal] = useState(false)
     const [selectedAction, setSelectedAction] = useState()
     const loggedInUser = useSelector(state => state.userReducer.loggedInUser)
@@ -31,19 +28,40 @@ export function ActionsPage() {
     useEffect(() => {
         showActionsStats()
     }, [loggedInUser])
-    useEffect(() => {
-        console.log('filterBy', filterBy);
-    }, [filterBy])
+
+    const onFocus = () => {
+        dispatch(hideBottomBar())
+    }
+    const onBlur = () => {
+        dispatch(showBottomBar())
+    }
 
     const onAddAction = async (action) => {
+        if (loggedInUser.userName === 'Guest') {
+            action.category = action.category ? action.category : 'Family'
+            action.isDone = false
+            action.createdAt = new Date()
+            action.timeStamp = Date.now()
+            loggedInUser.actions = [action, ...loggedInUser.actions]
+            const user = { ...loggedInUser }
+            dispatch(updateUser(user))
+            return;
+        }
         const user = await actionsService.addAction(loggedInUser, action)
         dispatch(updateUser(user))
     }
 
     const onIsDone = async (action) => {
         setSelectedAction(action)
-        const user = await actionsService.updateActionDone(loggedInUser, action)
-        dispatch(updateUser(user))
+        if (loggedInUser.userName === 'Guest') {
+            const actionToEdit = loggedInUser.actions.find(userAction => userAction.timeStamp === action.timeStamp)
+            actionToEdit.isDone = !actionToEdit.isDone
+            const user = { ...loggedInUser }
+            dispatch(updateUser(user))
+        } else {
+            const user = await actionsService.updateActionDone(loggedInUser, action)
+            dispatch(updateUser(user))
+        }
         setIsDoneMsgModal(true)
         setTimeout(() => {
             setIsDoneMsgModal(false)
@@ -51,24 +69,34 @@ export function ActionsPage() {
     }
 
     const showDoneMessage = (action) => {
-        return !action?.isDone ? <p className="done-action-message-modal">Well done! "{action?.title}" has completed.</p> : <p className="done-action-message-modal">"{action?.title}" is now undone.</p>
+        if (loggedInUser?.userName === 'Guest') {
+            return action?.isDone ? <p className="done-action-message-modal">Well done! "{action?.title}" completed.</p> : <p className="done-action-message-modal">"{action?.title}" is now undone.</p>
+        } else {
+            return !action?.isDone ? <p className="done-action-message-modal">Well done! "{action?.title}" completed.</p> : <p className="done-action-message-modal">"{action?.title}" is now undone.</p>
+        }
     }
 
     const onEditAction = async (originalAction, editedAction) => {
-        const user = await actionsService.updateActionEdit(loggedInUser, originalAction, editedAction)
-        dispatch(updateUser(user))
+        if (loggedInUser.userName === 'Guest') {
+            const actionToEdit = loggedInUser.actions.find(userAction => userAction.timeStamp === originalAction.timeStamp)
+            actionToEdit.title = editedAction.title ? editedAction.title : originalAction.title;
+            actionToEdit.category = editedAction.category ? editedAction.category : originalAction.category;
+            actionToEdit.todoTime = editedAction.todoTime ? editedAction.todoTime : originalAction.todoTime;
+            const user = { ...loggedInUser }
+            dispatch(updateUser(user))
+        } else {
+            const user = await actionsService.updateActionEdit(loggedInUser, originalAction, editedAction)
+            dispatch(updateUser(user))
+        }
+
     }
-
-
 
     const userCategoryAction = () => {
         const actions = loggedInUser?.actions?.map(action => action.category)
         var res = actions?.filter((category, index) => actions.indexOf(category) === index)
         if (res) res = ['All', ...res]
-        return res?.map(category => <option>{category}</option>)
+        return res?.map(category => <option key={category}>{category}</option>)
     }
-
-
 
     const onRemoveAction = async (action) => {
         setIsRemoveMessageOpen(true)
@@ -76,15 +104,21 @@ export function ActionsPage() {
     }
 
     const onRemoveAfterConfirmation = async () => {
-        const user = await actionsService.removeAction(loggedInUser, selectedAction)
-        dispatch(updateUser(user))
-        if (user) setIsRemoveMessageOpen(false)
-
+        if (loggedInUser.userName === 'Guest') {
+            loggedInUser.actions = loggedInUser.actions.filter(userAction => userAction.timeStamp !== selectedAction.timeStamp)
+            const user = { ...loggedInUser }
+            if (user) setIsRemoveMessageOpen(false)
+            dispatch(updateUser(user))
+        } else {
+            const user = await actionsService.removeAction(loggedInUser, selectedAction)
+            if (user) setIsRemoveMessageOpen(false)
+            dispatch(updateUser(user))
+        }
         setTimeout(() => {
-            setIsErrorMsgModal(true)
+            setIsRemoveMsgModal(true)
         }, 500);
         setTimeout(() => {
-            setIsErrorMsgModal(false)
+            setIsRemoveMsgModal(false)
         }, 2500);
     }
 
@@ -105,8 +139,14 @@ export function ActionsPage() {
         const action = newActions.splice(source.index, 1)
         newActions.splice(destination.index, 0, action[0])
         loggedInUser.actions = newActions
-        const user = await userService.updateUserActions(loggedInUser)
-        dispatch(changeActionsOrder(user))
+        if (loggedInUser.userName === 'Guest') {
+            const user = { ...loggedInUser }
+            dispatch(updateUser(user))
+        } else {
+            const user = await userService.updateUserActions(loggedInUser)
+            dispatch(updateUser(user))
+        }
+
     }
 
     const onFilterActions = (ev) => {
@@ -116,7 +156,7 @@ export function ActionsPage() {
 
     const actionsToShow = () => {
         const userActions = loggedInUser?.actions
-        let filteredActions = filterBy.title ? userActions.filter(action => action.title.toLowerCase().includes(filterBy.title)) : userActions
+        let filteredActions = filterBy.title ? userActions.filter(action => action.title.toLowerCase().includes(filterBy.title.toLowerCase())) : userActions
         if (filterBy.category) {
             if (filterBy.category === 'All') {
                 return filteredActions
@@ -133,7 +173,7 @@ export function ActionsPage() {
             <div className="action-page-top-box">
                 <ActionsAdd onAddAction={onAddAction} />
                 <div className="filter-inputs-box">
-                    <input autoComplete="off" value={filterBy.title} className="actions-filter-title-input" name="title" onChange={(ev) => { setFilterBy({ ...filterBy, title: ev.target.value }) }} type="text" placeholder="Search action" />
+                    <input autoComplete="off" onFocus={() => { onFocus() }} onBlur={() => { onBlur() }} value={filterBy.title} className="actions-filter-title-input" name="title" onChange={(ev) => { setFilterBy({ ...filterBy, title: ev.target.value }) }} type="text" placeholder="Search action" />
                     <select name="category" className="actions-filter-category-input" onChange={(ev) => { onFilterActions(ev) }}>
                         {userCategoryAction()}
                     </select>
@@ -153,7 +193,7 @@ export function ActionsPage() {
                     <button className="remove-action-cancel-btn" onClick={() => { setIsRemoveMessageOpen(false) }}>I regret</button>
                 </div>
             </Slide>
-            <Slide in={isErrorMsgModal}>
+            <Slide in={isRemoveMsgModal}>
                 <p className="removed-action-message-modal">{selectedAction?.title} was successfuly removed.</p>
             </Slide>
             <DragDropContext onDragEnd={onDragEnd}>
@@ -173,6 +213,3 @@ export function ActionsPage() {
     )
 }
 
-{
-
-}

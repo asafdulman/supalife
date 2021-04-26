@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export function Logout() {
 
-    const [isBarOpen, setIsBarOpen] = useState(false)
     let history = useHistory();
     const dispatch = useDispatch()
     const onLogout = () => {

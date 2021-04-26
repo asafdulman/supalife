@@ -1,3 +1,4 @@
+import { storageService } from "../../services/storageService";
 import {
     userService
 } from "../../services/userService"
@@ -5,7 +6,6 @@ import {
 export function loadUser(id) {
     return async dispatch => {
         const user = await userService.getUser(id)
-        console.log('user', user);
         dispatch({
             type: 'LOAD_USER',
             user
@@ -13,6 +13,7 @@ export function loadUser(id) {
     }
 }
 export function updateUser(user) {
+    storageService.saveToStorage('userInStorage', user)
     return async dispatch => {
         dispatch({
             type: 'SET_USER',
@@ -21,6 +22,7 @@ export function updateUser(user) {
     }
 }
 export function logout() {
+    storageService.saveToStorage('userInStorage', null)
     return async dispatch => {
         dispatch({
             type: 'SET_USER',
@@ -30,10 +32,6 @@ export function logout() {
 }
 
 export function changeActionsOrder(user) {
-    // const newActions = [...actions]
-    // const action = newActions.splice(oldIdx, 1)
-    // newActions.splice(newIdx, 0, action[0])
-    // loggedInUser.actions = newActions
     return async dispatch => {
         dispatch({
             type: 'CHANGE_ORDER',

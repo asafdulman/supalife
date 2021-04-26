@@ -5,17 +5,17 @@ export const insightService = {
 }
 
 function getWeeklyAvg(avg) {
-    if (avg > 3.5) {
+    if (avg >= 3.5) {
         return insights[0].content
-    } else if (avg < 2.7) {
+    } else if (avg <= 2.7) {
         return insights[1].content
     }
 }
 
 function getGeneralInsight(totalAvg, chosenDayAvg) {
-        if (totalAvg > 3.5 && chosenDayAvg < 2.7) {
+        if (totalAvg >= 3.5 && chosenDayAvg <= 2.7) {
             return insights[3].content
-        } else if (totalAvg < 3 && chosenDayAvg > 3.5) {
+        } else if (totalAvg <= 3 && chosenDayAvg >= 3.5) {
             return insights[2].content
         }
 }
@@ -53,10 +53,15 @@ function getInsightPerCategory(category, avg) {
     } else if (category === 'Kids' && avg >= 3.5) {
         return 'Be happy with what you have with your kids! Appreciate it and embrace every moment.'
     }
+    if (category === 'Fitness' && avg <= 2.5) {
+        return 'Working out is good for body, but also for your mental health.'
+    } else if (category === 'Kids' && avg >= 2.5 && avg <= 3.7) {
+        return 'Keep up the good work. Maybe you can add one more session is your busy week?'
+    } else if (category === 'Kids' && avg >= 3.5) {
+        return 'Seems like you are in a great shape! keep it up!'
+    }
 
 }
-
-
 
 const insights = [
     {

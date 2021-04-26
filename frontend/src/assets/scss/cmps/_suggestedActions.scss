@@ -35,7 +35,28 @@
     font-family: 'Poppins', sans-serif;
     margin: 10px 0;
     font-size: 17px;
-    transition: all 0.8s ease;
+    transition: all 0.3s ease;
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.suggested-actions-btn-clicked {
+    border-radius: 20px;
+    background-color: $primary-color;
+    padding: 15px 35px;
+    width: 85%;
+    border: 1px solid rgb(173, 173, 173);
+    color: rgb(255, 254, 254);
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0;
+    font-size: 17px;
+    transition: all 0.3s ease;
 
     &:active {
         transform: scale(0.95);
@@ -71,9 +92,10 @@
 }
 
 .suggested-actions-date-input {
+    width: 200px;
     border-radius: 15px;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     margin: 15px 0;
     background-color: $input-bgc;
     color: $primary-color;

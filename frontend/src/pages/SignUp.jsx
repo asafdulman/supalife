@@ -4,14 +4,22 @@ import { useDispatch } from 'react-redux'
 import { userService } from "../services/userService";
 import { useHistory } from "react-router-dom";
 import { Grow, Slide } from '@material-ui/core';
+import { hideBottomBar, showBottomBar } from "../store/actions/bottomBarActions";
 
 export function SignUp() {
 
     const [userData, setUserData] = useState({ userName: '', password: '', age: '', gender: 'male' })
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isErrorMessageOpen, setIsErrorMessageOpen] = useState(false)
-    const dispatch = useDispatch()
     let history = useHistory();
+    const dispatch = useDispatch()
+
+    const onFocus = () => {
+        dispatch(hideBottomBar())
+    }
+    const onBlur = () => {
+        dispatch(showBottomBar())
+    }
 
     const onHandleChange = (ev) => {
         const name = ev.target.name
@@ -45,9 +53,9 @@ export function SignUp() {
             </Slide>
             <h3 className="signup-heading">Create Account</h3>
             <form className="signup-form">
-                <input required className="signup-username-input" onChange={(ev) => { onHandleChange(ev) }} type="text" name="userName" placeholder="User Name" />
-                <input className="signup-password-input" onChange={(ev) => { onHandleChange(ev) }} type="text" name="password" placeholder="Password" />
-                <input className="signup-age-input" onChange={(ev) => { onHandleChange(ev) }} type="number" name="age" placeholder="Age" min="0" max="99" />
+                <input onFocus={() => { onFocus() }} onBlur={() => { onBlur() }} required className="signup-username-input" onChange={(ev) => { onHandleChange(ev) }} type="text" name="userName" placeholder="User Name" />
+                <input onFocus={() => { onFocus() }} onBlur={() => { onBlur() }} className="signup-password-input" onChange={(ev) => { onHandleChange(ev) }} type="text" name="password" placeholder="Password" />
+                <input onFocus={() => { onFocus() }} onBlur={() => { onBlur() }} className="signup-age-input" onChange={(ev) => { onHandleChange(ev) }} type="number" name="age" placeholder="Age" min="0" max="99" />
                 <select value={userData.gender} className="sign-up-gender-select" name="gender" onChange={(ev) => { onHandleChange(ev) }}>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -57,7 +65,7 @@ export function SignUp() {
             </form>
             <Grow in={isModalOpen}>
                 <div className="go-to-categories-modal">
-                    <p>Your have been signed up successfully! Now let's add some life categories.</p>
+                    <p>Your have signed up successfully! Now let's add some life categories.</p>
                     <p onClick={() => { onGoToCategories() }}>Take me there</p>
                 </div>
             </Grow>

@@ -3,6 +3,7 @@ $primary-color: #5F2EEA;
 $input-bgc: #EFF0F7;
 
 .edit-rate-box-not-rated {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,10 +12,12 @@ $input-bgc: #EFF0F7;
     margin-bottom: 30px;
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(53, 33, 33, 0.04);
-
+    width: 70%;
 }
 
 .edit-rate-box-rated {
+    position: relative;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,13 +44,45 @@ $input-bgc: #EFF0F7;
 
 }
 
-.edit-rate-modal {
-    position: fixed;
-    z-index: 9999;
+.clicked-rate-btn {
+    opacity: 0.7 !important;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
 }
 
+.edit-rate-modal-open {
+    position: relative;
+    border-radius: 0 0 5px 5px;
+    width: 375px;
+    margin-top: 5px;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    max-height: 400px;
+    z-index: 1;
+}
+
+.edit-rate-modal-close {
+    max-height: 0;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    border-radius: 0 0 5px 5px;
+    width: 375px;
+    margin-top: 5px;
+    opacity: 0;
+    z-index: -1;
+}
+
+// .edit-rate-modal {
+//     position: absolute;
+//     z-index: 9999;
+//     border: 1px solid $primary-color;
+//     border-radius: 5px;
+// }
+
+
+
 .edit-rate-preview-overlay {
-    background-color: #dfdfdf88;
+    background-color: #dfdfdf5b;
     transition: all 0.3s ease;
     z-index: 2;
     position: absolute;
@@ -154,7 +189,6 @@ $input-bgc: #EFF0F7;
     button {
         border-radius: 50%;
         padding: 15px 20px;
-        margin: 0 9px;
         border: none;
         color: rgb(58, 58, 58);
         font-size: 16px;
@@ -176,9 +210,19 @@ $input-bgc: #EFF0F7;
 
     .edit-rate-btns-box {
 
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        button {
+            &:active {
+                transform: scale(0.8);
+                outline: none;
+            }
+        }
+
         button:first-child {
             background-color: #C30052;
-            margin-left: 0;
         }
 
         button:nth-child(2) {
@@ -195,31 +239,9 @@ $input-bgc: #EFF0F7;
 
         button:nth-child(5) {
             background-color: #00BA88;
-            margin-right: 0;
         }
-
-        // button:first-child {
-        //     background-color: #cc3232;
-        //     margin-left: 0;
-        // }
-
-        // button:nth-child(2) {
-        //     background-color: #db7b2b;
-        // }
-
-        // button:nth-child(3) {
-        //     background-color: #e7b416;
-        // }
-
-        // button:nth-child(4) {
-        //     background-color: #99c140;
-        // }
-
-        // button:nth-child(5) {
-        //     background-color: #2dc937;
-        //     margin-right: 0;
-        // }
     }
 
 
 }
+

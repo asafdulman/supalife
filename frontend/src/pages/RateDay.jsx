@@ -8,6 +8,7 @@ import Confetti from 'react-confetti'
 import { ProgressBar } from "../cmps/ProgressBar";
 import { setTotalCategories, setCompletedCategories } from "../store/actions/progressBarActions";
 import { Slide } from '@material-ui/core'
+import { NavLink } from "react-router-dom";
 
 export function RateDay() {
 
@@ -17,7 +18,9 @@ export function RateDay() {
     const [dailySummary, setDailySummary] = useState([])
     const [pickedDate, setPickedDate] = useState()
     const [isConf, setisConf] = useState(false)
+    const [isMsgModalOpen, setIsMsgModalOpen] = useState(false)
     const [datePicker, setDatePicker] = useState()
+
     const loggedInUser = useSelector(state => state.userReducer.loggedInUser)
 
     useEffect(() => {
@@ -35,6 +38,7 @@ export function RateDay() {
     const setInitialDate = () => {
         let date = new Date()
         date = `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+        date = loggedInUser?.userName === 'Guest' ? '2021-04-04' : date
         setDatePicker(date)
         const dayArr = date.split('-')
         date = `${dayArr[1]}/${dayArr[2]}/${dayArr[0]}`
@@ -57,10 +61,6 @@ export function RateDay() {
 
     const onAddDailyData = async () => {
         if (!loggedInUser) return;
-        if (!pickedDate) {
-            alert('please select date')
-            return;
-        }
         if (!dailyCategories.length) {
             setIsMeesageModalOpen(true)
             setTimeout(() => {
@@ -71,15 +71,20 @@ export function RateDay() {
         setisConf(true)
         setTimeout(() => {
             setisConf(false)
-        }, 3000);
+        }, 4000);
+        setTimeout(() => {
+            setIsMsgModalOpen(true)
+        }, 4000);
+        setTimeout(() => {
+            setIsMsgModalOpen(false)
+        }, 8000);
         const data = {
             dailySummary,
             dailyCategories
         }
+        if (loggedInUser.userName === 'Guest') return;
         const user = await userService.updateDailyData(loggedInUser, data, pickedDate)
-        console.log('user', user);
         dispatch(updateUser(user))
-
     }
 
     const onPickDate = (ev) => {
@@ -108,13 +113,17 @@ export function RateDay() {
             <Slide in={isErrorMesageModalOpen}>
                 <div className="rate-day-fill-category-message-modal">Please fill at least one category.</div>
             </Slide>
+            <Slide in={isMsgModalOpen}>
+                <div className="rate-day-send-form-message-modal"><p>Great! Now go to the <NavLink to="dailyrating">Stats</NavLink> page and see your graph.</p> </div>
+            </Slide>
+
             <h1 className="rate-day-heading">Rate This Day!</h1>
-            <input placeholder="hey" className="date-box" type="date" value={datePicker} onChange={(ev) => { onPickDate(ev) }} />
+            <input className="date-box" type="date" defaultValue={datePicker} value={datePicker} onChange={(ev) => { onPickDate(ev) }} />
             <DailySummary modifyDailySummary={modifyDailySummary} />
             <ProgressBar />
             {loggedInUser && <EditPreviewList modifyDataToGeneralForm={modifyDataToGeneralForm} pickedDate={pickedDate} categories={loggedInUser.categories} loggedInUser={loggedInUser} />}
             <button className="send-rating-btn" onClick={() => { onAddDailyData() }}>DONE</button>
-            {isConf && <Confetti height={800} gravity={0.2} />}
+            {isConf && <Confetti height={1000} gravity={0.2} />}
         </div>
     )
 }
